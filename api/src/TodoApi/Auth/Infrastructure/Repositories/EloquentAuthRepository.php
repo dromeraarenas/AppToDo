@@ -36,7 +36,6 @@ final class EloquentAuthRepository implements AuthRepositoryContract
 
             return new User(
                 new UserEmail($user->email),
-                new UserEmailVerifiedDate($user->email_verified_at),
                 new UserPassword($user->password),
                 new UserRememberToken($user->createToken('auth_token')->plainTextToken)
             );
