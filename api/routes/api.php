@@ -8,6 +8,12 @@ use App\Http\Controllers\Auth\LoginAuthController;
 
 use App\Http\Controllers\Category\GetAllCategoriesController;
 
+use App\Http\Controllers\ToDo\CreateToDoController;
+use App\Http\Controllers\ToDo\GetAllToDoByUserController;
+use App\Http\Controllers\ToDo\GetToDoController;
+use App\Http\Controllers\ToDo\UpdateToDoController;
+use App\Http\Controllers\ToDo\DeleteToDoController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +33,11 @@ Route::post('login',LoginAuthController::class);
 //Private
 Route::middleware(['auth:sanctum'])->group(function()
 {
+    Route::post('todo',CreateToDoController::class);
+    Route::get('todos',GetAllToDoByUserController::class);
+    Route::get('todo/{todo}',GetToDoController::class);
+    Route::put('todo/{todo}',UpdateToDoController::class);
+    Route::delete('todo/{todo}',DeleteToDoController::class);
 
     Route::get('categories',GetAllCategoriesController::class);
 
