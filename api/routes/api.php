@@ -5,6 +5,10 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Auth\RegisterAuthController;
 use App\Http\Controllers\Auth\LoginAuthController;
+
+use App\Http\Controllers\Category\GetAllCategoriesController;
+
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -20,6 +24,10 @@ use App\Http\Controllers\Auth\LoginAuthController;
 Route::post('register',RegisterAuthController::class);
 Route::post('login',LoginAuthController::class);
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+//Private
+Route::middleware(['auth:sanctum'])->group(function()
+{
+
+    Route::get('categories',GetAllCategoriesController::class);
+
+}); 
